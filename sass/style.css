@@ -30,15 +30,26 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+@media (max-width: 56.25em) {
+  body {
+    background-image: none;
+    background-color: #242424;
+  }
+}
 
 h1 {
   font-family: "Anton", sans-serif;
-  padding: 0 0px 0px 2rem;
+  padding: 0px 0px 2rem;
   font-size: 5rem;
   text-transform: uppercase;
   font-weight: 400;
   color: #faeee4;
   text-shadow: 0 0 5px rgba(247, 156, 71, 0.678), 0 0 15px rgba(247, 125, 49, 0.678), 0 0 50px rgba(247, 156, 71, 0.836);
+}
+@media (max-width: 37.5em) {
+  h1 {
+    margin-top: -0.8rem;
+  }
 }
 h1:hover {
   color: #faeee4;
@@ -76,6 +87,7 @@ h2 {
     left: 0px;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
   }
 }
 
@@ -168,8 +180,11 @@ nav ul {
   .hamburger {
     display: inline-block;
     position: fixed;
-    top: 1rem;
+    top: 1.5rem;
     right: 1rem;
+    background-color: rgba(36, 36, 36, 0.4745098039);
+    border-radius: 50%;
+    padding: 10px;
   }
 }
 .hamburger.bar:nth-child(1) {
@@ -320,13 +335,9 @@ nav ul {
   height: -moz-fit-content;
   height: fit-content;
 }
-@media (max-width: 56.25em) {
+@media (max-width: 75em) {
   #about {
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3647058824), rgba(0, 0, 0, 0.2117647059)), url(../pic/about_cover_small.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
+    background-image: none;
   }
 }
 
@@ -424,6 +435,7 @@ p {
 @media (max-width: 26em) {
   .service__wreaper {
     padding: 15px;
+    margin: 0 1.5rem;
   }
 }
 @media (min-height: 1000px) {
@@ -439,6 +451,11 @@ p {
   position: relative;
   min-height: 100%;
   margin-bottom: 150px;
+}
+@media (max-width: 56.25em) {
+  .service__border {
+    box-shadow: 0 0 1px rgba(247, 156, 71, 0.678), 0 0 5px rgba(247, 125, 49, 0.678), 0 0 20px rgba(247, 156, 71, 0.836);
+  }
 }
 .service__border:hover {
   animation: floatCard 0.8s ease forwards;
@@ -536,6 +553,11 @@ ul.listanev {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+@media (max-width: 75em) {
+  #contact {
+    background-image: none;
+  }
+}
 
 .contact__subheader {
   display: block;
@@ -629,6 +651,9 @@ select option {
   bottom: 3%;
   left: 89%;
 }
+.socials-mobile {
+  visibility: hidden;
+}
 .socials img {
   width: 2rem;
   padding: 0 0.25rem;
@@ -649,18 +674,23 @@ select option {
   }
 }
 @media (max-width: 75em) {
-  .socials {
-    opacity: 0;
-  }
-  .socials.katt {
+  .socials-mobile.katt {
+    visibility: visible;
+    padding-top: 3rem;
     transition: opacity 1s;
-    opacity: 1;
+    position: relative;
     z-index: 10000;
     bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
     animation: socials-flow 1s ease-in;
     transition-delay: 0.8s;
+  }
+}
+
+@media (max-width: 75em) {
+  footer {
+    visibility: hidden;
   }
 }
 

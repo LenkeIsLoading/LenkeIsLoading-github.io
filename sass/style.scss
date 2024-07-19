@@ -6,7 +6,6 @@
 //2440+ big screen
 
 @mixin respond($breakpoint) {
-
 	@if $breakpoint == small-phone {
 		@media (max-width: 26em) {
 			@content;
@@ -67,6 +66,11 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+
+	@include respond(tab-port) {
+		background-image: none;
+		background-color: #242424;
+	}
 }
 
 //VARIABLES
@@ -76,13 +80,16 @@ $light-text: #faeee4;
 
 h1 {
 	font-family: "Anton", sans-serif;
-	padding: 0 0px 0px 2rem;
+	padding:  0px 0px 2rem;
 	font-size: 5rem;
 	text-transform: uppercase;
 	font-weight: 400;
 	color: $light-text;
 	text-shadow: 0 0 5px rgba(247, 156, 71, 0.678),
 		0 0 15px rgba(247, 125, 49, 0.678), 0 0 50px rgba(247, 156, 71, 0.836);
+
+		@include respond(phone) {
+			margin-top: -.8rem;}
 
 	&:hover {
 		color: $light-text;
@@ -124,6 +131,7 @@ h2 {
 			left: 0px;
 			height: 100vh;
 			width: 100vw;
+			overflow: hidden;
 		}
 	}
 }
@@ -206,6 +214,7 @@ nav {
 //HAMBURGER NAV
 
 .hamburger {
+	
 	display: none;
 	cursor: pointer;
 	padding: 30px;
@@ -221,10 +230,13 @@ nav {
 	@include respond(tab-land) {
 		display: inline-block;
 		position: fixed;
-		top: 1rem;
+		top: 1.5rem;
 		right: 1rem;
+		background-color: #24242479;
+		border-radius: 50%;
+		padding: 10px;
+
 	}
-	
 
 	&.bar:nth-child(1) {
 		transition: 0.5s;
@@ -376,18 +388,12 @@ nav {
 	background-position: 40%;
 	height: fit-content;
 
-	@include respond(tab-port) {
-		background-image: linear-gradient(to left, #0000005d, #00000036),
-		url(../pic/about_cover_small.jpg);
-	background-size: cover;
-
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	height: 100vh;
+	@include respond(tab-land) {
+		background-image: none;
 		
-			
-			
-		}
+
+		
+	}
 }
 
 .about__container {
@@ -395,19 +401,16 @@ nav {
 	align-items: center;
 	justify-content: flex-start;
 	@include respond(tab-land) {
-	justify-content: center;
-		
-		
-	}}
+		justify-content: center;
+	}
+}
 
-	
-
-	p{
+p {
 	font-family: "Anton", sans-serif;
 	text-align: justify;
 	font-size: 1.1rem;
 	text-transform: uppercase;
-	padding: 5rem 3rem ;
+	padding: 5rem 3rem;
 	line-height: 30px;
 	width: 50%;
 	color: $light-text;
@@ -415,44 +418,31 @@ nav {
 		0 0 5px rgba(247, 125, 49, 0.678), 0 0 20px rgba(247, 156, 71, 0.836);
 	@include respond(tab-land) {
 		width: 80%;
-
-		
 	}
 	@include respond(tab-port) {
 		width: 90%;
 		font-size: 1.6rem;
 		padding: 6rem 3rem;
-
-		
 	}
 	@include respond(phone) {
 		width: 90%;
 		line-height: 28px;
 		font-size: 1.8rem;
 		padding: 10rem 3rem;
-
-		
 	}
 	@include respond(small-phone) {
 		width: 90%;
 		line-height: 20px;
 		font-size: 1.5rem;
 		padding: 4rem 3rem;
-
-		
 	}
 
 	@include respond(big-screen) {
 		width: 45%;
 		line-height: 65px;
 		font-size: 1.3rem;
-
-		
 	}
 }
-
-
-
 
 #services {
 	height: fit-content;
@@ -463,17 +453,16 @@ nav {
 
 	// @include respond(tab-port) {
 	// 	min-height: 90vh;
- 	
+
 	// }
 	// @include respond(phone) {
 	// 	height: 250vh;
- 	
+
 	// }
 	// @include respond(small-phone) {
 	// 	height: 330vh;
- 	
+
 	// }
-	
 }
 
 .service__wreaper {
@@ -483,37 +472,28 @@ nav {
 	gap: 30px;
 	margin: 3.5rem 50px;
 	grid-auto-flow: row;
-	
 
 	@include respond(tab-land) {
 		grid-template-columns: repeat(2, minmax(270px, 1fr));
 		padding: 50px;
- 	
 	}
 	@include respond(tab-port) {
 		grid-template-columns: repeat(2, minmax(270px, 1fr));
 		padding: 30px;
 		margin: 70px 0;
- 	
 	}
 	@include respond(phone) {
 		grid-template-columns: repeat(1, minmax(270px, 1fr));
 		padding: 30px;
 		margin: 5px 0;
- 	
 	}
 	@include respond(small-phone) {
-	
 		padding: 15px;
-
-		
- 	
+		margin: 0 1.5rem;
 	}
 	@include respond(high-screen) {
 		margin: 10rem 60px;
-		gap: 50px
-		
- 	
+		gap: 50px;
 	}
 }
 
@@ -523,6 +503,12 @@ nav {
 	position: relative;
 	min-height: 100%;
 	margin-bottom: 150px;
+
+	@include respond(tab-port) {
+		box-shadow: 0 0 1px rgba(247, 156, 71, 0.678),
+			0 0 5px rgba(247, 125, 49, 0.678), 0 0 20px rgba(247, 156, 71, 0.836);
+	
+	}
 
 	&:hover {
 		animation: floatCard 0.8s ease forwards;
@@ -540,12 +526,9 @@ nav {
 	margin: 0px 20px;
 	@include respond(phone) {
 		font-size: 2.6rem;
- 	
 	}
 	@include respond(big-screen) {
 		padding: 1rem 1rem;
-		
- 	
 	}
 }
 
@@ -563,12 +546,10 @@ ul.listanev {
 
 	@include respond(phone) {
 		font-size: 1.6rem;
- 	
 	}
 	@include respond(big-screen) {
 		padding: 5rem 1rem;
 		line-height: 2.5rem;
- 	
 	}
 }
 
@@ -592,12 +573,9 @@ ul.listanev {
 	transform: translate(-50%, -50%);
 	@include respond(phone) {
 		font-size: 1.2rem;
- 	
 	}
 	@include respond(big-screen) {
-		
 		padding: 30px 20px;
- 	
 	}
 
 	&:hover {
@@ -623,6 +601,9 @@ ul.listanev {
 	height: 100vh;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	@include respond(tab-land) {
+		background-image: none;
+	}
 
 }
 
@@ -638,26 +619,18 @@ ul.listanev {
 	@include respond(tab-land) {
 		text-align: center;
 		margin: 50px 20px;
-
-
-
 	}
-
-
 }
 
 .contact__flex {
 	display: flex;
 	flex-direction: column;
-	padding: 3rem 20px 3rem 20px; 
+	padding: 3rem 20px 3rem 20px;
 
 	@include respond(tab-land) {
 		align-items: center;
-		height: 100%; 
-		padding: 1.5rem 20px 4rem 20px; 
-
-		
- 	
+		height: 100%;
+		padding: 1.5rem 20px 4rem 20px;
 	}
 }
 
@@ -675,26 +648,21 @@ ul.listanev {
 	color: $light-text;
 	margin: 5px 20px;
 	box-sizing: border-box;
-	
 
 	@include respond(tab-land) {
-	font-size: 1.6rem;
-	font-weight: 600;
-	background-color: rgba(0, 0, 0, 0);
-	
-	min-width:80%;
-	
-	padding: 20px;
-	
+		font-size: 1.6rem;
+		font-weight: 600;
+		background-color: rgba(0, 0, 0, 0);
 
-		
-		
- 	
+		min-width: 80%;
+
+		padding: 20px;
 	}
 
 	@include respond(small-phone) {
 		font-size: 1.3rem;
-	padding: 15px;}
+		padding: 15px;
+	}
 }
 
 #services_select,
@@ -728,6 +696,11 @@ select option {
 	bottom: 3%;
 	left: 89%;
 
+	&-mobile {
+		visibility: hidden;
+
+	}
+
 	img {
 		width: 2rem;
 		padding: 0 0.25rem;
@@ -749,24 +722,32 @@ select option {
 		}
 	}
 
-	@include respond(tab-land) {
-		opacity: 0;
-		&.katt {
+	
+		&-mobile.katt {
+			
+		@include respond(tab-land) {
+			visibility: visible;
+			padding-top:3rem;
 			transition: opacity 1s;
-
-			opacity: 1;
+			position: relative;
 			z-index: 10000;
 			bottom: 15%;
 			left: 50%;
 			transform: translateX(-50%);
 			animation: socials-flow 1s ease-in;
-			transition-delay: .8s;
+			transition-delay: 0.8s;
 		}
+		
+	}
+}
+
+footer{
+	@include respond(tab-land){
+		visibility: hidden;
 	}
 }
 
 //SCROLLBAR
-
 
 ::-webkit-scrollbar-track {
 	background: #666666;
